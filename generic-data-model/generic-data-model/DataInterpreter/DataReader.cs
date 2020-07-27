@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace DataModelParty.DataInterpreter
 {
-    public abstract class DataInterpreter
+    public abstract class DataReader
+    {
+        public abstract List<DataObjectReader> GetDataObjectsReader();
+    }
+
+    public abstract class DataObjectReader
     {
         public abstract T GetField<T>(string fieldName);
 
         public abstract IList<T> GetArrayField<T>(string fieldName);
 
-        public abstract bool SetArrayField<T>(string fieldName, IList<T> list);
-
-        public abstract bool SetField<T>(string fieldName, T field);
-
-
+        public abstract bool ContainsField(string fieldName);
     }
+
 }
